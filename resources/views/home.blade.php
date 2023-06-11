@@ -27,6 +27,16 @@
         </form>
     </div>
 
+    <div style="border: 3px solid rgb(104, 101, 101);">
+        <h2>All posts</h2>
+        @foreach ($posts as $post)
+            <div style="background: rgb(239, 241, 217); padding: 10px; margin:10px">
+                <h3>{{$post['title']}}</h3>
+                {{$post['body']}}
+            </div>
+        @endforeach
+    </div>
+
     @else
     <div style="border: 3px solid rgb(104, 101, 101);">
         <h2>Register</h2>
