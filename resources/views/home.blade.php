@@ -2,10 +2,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
-    <div style="border: 3px solid black;">
+
+    @auth
+        
+    <p>You are logged in</p>
+    <form action="/logout" method="POST">
+        @csrf
+        <button>Log out</button>
+    </form>
+        
+    @else
+    <div style="border: 3px solid rgb(104, 101, 101);">
         <h2>Register</h2>
         <form action="/register" method="POST">
             @csrf
@@ -15,5 +25,19 @@
             <button>Register</button>
         </form>
     </div>
+    <br>
+    <div style="border: 3px solid rgb(104, 101, 101);ack;">
+        <h2>Log In</h2>
+        <form action="/login" method="POST">
+            @csrf
+            <input name="loginname" type="text" placeholder="name">
+            <input name="loginpassword" type="password" placeholder="password">
+            <button>Log in</button>
+        </form>
+    </div>
+    
+    @endauth
+
+   
 </body>
 </html>
