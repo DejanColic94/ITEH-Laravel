@@ -14,6 +14,19 @@
         <button>Log out</button>
     </form>
         
+    <div style="border: 3px solid rgb(104, 101, 101);">
+        <h2>Create a new post</h2>
+        <form action="/create-post" method="POST">
+            @csrf
+            <input type="text" name="title" placeholder="title">
+            <br>
+            <br>
+            <br>
+            <textarea name="body" placeholder="your post..."></textarea>
+            <button>Save</button>
+        </form>
+    </div>
+
     @else
     <div style="border: 3px solid rgb(104, 101, 101);">
         <h2>Register</h2>
