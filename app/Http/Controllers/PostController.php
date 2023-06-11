@@ -31,7 +31,7 @@ class PostController extends Controller
     }
 
     public function updatePost(Post $post, Request $request) {
-        if(auth()->user()->id !== $post['user_id']) {
+        if(auth()->user() === null || auth()->user()->id !== $post['user_id']) {
             return redirect('/');
         }
 
@@ -44,6 +44,15 @@ class PostController extends Controller
         $userInput['body'] = strip_tags($userInput['body']);
 
         $post->update($userInput);
+        return redirect('/');
+    }
+
+    public function deletePost(Post $post) {
+        if(auth()->user() === null || auth()->user()->id !== $post['user_id']) {
+            return redirect('/');
+        }
+
+        $post->delete();
         return redirect('/');
     }
 }
